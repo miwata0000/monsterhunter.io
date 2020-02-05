@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>WA jQueryプラグイン実装</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/design.css">
+<!--slick用css-->
+<link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+<link rel="stylesheet" type="text/css" href="css/slick.css"/>
+<!--Modaal用css-->
+<link rel="stylesheet" type="text/css" href="css/modaal.min.css"/>
+<!--jQuery-->
+<script type="text/javascript" src="js/jquery-2.0.2.min.js"></script>
+<!--slick用js-->
+<script type="text/javascript" src="js/slick.min.js"></script>
+<!--Modaal用js-->
+<script type="text/javascript" src="js/modaal.min.js"></script>
+<!--snowfall用js-->
+<script type="text/javascript" src="js/snowfall.jquery.js"></script>
+
+<script type="text/javascript">
+$(function(){
+	//ナビのアコーディオン（動作確認様）
+	$("#navi dt").click(function(){
+		$(this).next().slideToggle(500);
+  });
+});
+//画像切り替え
+$(function(){
+  $('#con1').mouseover(function(){
+    $(this).attr('src', 'images/consept_hover.png');
+  });
+  $('#con1').mouseleave(function(){
+    $(this).attr('src', 'images/consept.png');
+  });
+  $('#con2').mouseover(function(){
+    $(this).attr('src', 'images/consulting_hover.png');
+  });
+  $('#con2').mouseleave(function(){
+    $(this).attr('src', 'images/consulting.png');
+  });
+  $('#con3').mouseover(function(){
+    $(this).attr('src', 'images/production_hover.png');
+  });
+  $('#con3').mouseleave(function(){
+    $(this).attr('src', 'images/production.png');
+  });
+  $('#con4').mouseover(function(){
+    $(this).attr('src', 'images/traning_hover.png');
+  });
+  $('#con4').mouseleave(function(){
+    $(this).attr('src', 'images/traning.png');
+  });
+});
+//スライダー
+$(function(){
+  $('#mainVisual').slick({
+    autoplay: true, //自動再生
+    pauseOnFocus: false,
+    pauseOnHover: false,
+    pauseOnDotsHover: false,  //ユーザー操作による自動再生停止の解除
+    autoplaySpeed: 3000, //自動再生速度
+    dots: true, //ドットのナビゲーションを表示
+    infinite: true, //スライドのループ有効化
+    speed: 1000, //切り替えのスピード（小さくすると速くなる）
+    fade: true,  //フェードの有効化
+    });
+  });
+//モーダル
+$(function(){
+  $('.modal').modaal({
+	animation_speed: '500', 	// アニメーションのスピードをミリ秒単位で指定
+	background: '#000000',	// 背景の色を白に変更
+	overlay_opacity: '0.5',	// 背景のオーバーレイの透明度を変更
+	//fullscreen: 'true',	// フルスクリーンモードにする
+	background_scroll: 'true',	// 背景をスクロールさせるか否か
+	loading_content: 'Now Loading, Please Wait.',	// 読み込み時のテキスト表示
+  });
+
+  $('.image').modaal({
+    type: 'image'
+});
+});
+//まっくろくろすけ
+  $(function(){
+    $('.logo').click(function(){
+    $(document).snowfall({
+            flakeCount : 10,			// 要素の数
+            flakeIndex : "0",  //z座標 -で背面へ
+            minSize  : 1,    // 雪の最小サイズ
+            maxSize  : 100,    // 雪の最大サイズ
+            minSpeed : 1,    // 雪の最低速度
+            maxSpeed : 20,    // 雪の最高速度
+            round    : true, // 雪の形を丸くする
+            shadow   : false, // 雪に影をつける
+            flakeColor : "#000000", // 雪の色を指定
+            image : "images/susuwatari.png"		// 要素を指定の画像に変更
+        });
+        });
+      });
+//まっくろくろすけをけす
+$(document).ready(function(){
+$("#clear").click(function(){
+$(document).snowfall('clear');
+});
+});
+</script>
+</head>
+<body>
+<div id="wrapper">
+  <div id="contents_left">
+    <div id="header">
+      <h1><img src="images/logo.png" class="logo" width="158" height="85" alt="ロゴ"></h1>
+    </div>
+    <div id="navi">
+      <dl>
+        <dt><a href="#"><img src="images/nav1.png" width="190" height="45" alt="ボタン１"></a></dt>
+          <dd id="clear">まっくろくろすけを消す</dd>
+        <dt><a href="#"><img src="images/nav2.png" width="190" height="45" alt="ボタン２"></a></dt>
+          <dd>項目②</dd>
+        <dt><a href="#"><img src="images/nav3.png" width="190" height="45" alt="ボタン３"></a></dt>
+          <dd>項目③</dd>
+        <dt><a href="#"><img src="images/nav4.png" width="190" height="45" alt="ボタン４"></a></dt>
+          <dd>項目④</dd>
+        <dt><a href="#"><img src="images/nav5.png" width="190" height="45" alt="ボタン５"></a></dt>
+          <dd>項目⑤</dd>
+        <dt><a href="#"><img src="images/nav6.png" width="190" height="45" alt="ボタン６"></a></dt>
+          <dd>項目⑥</dd>
+      </dl>
+    </div>
+
+  </div>
+  <!--contents_left-->
+
+  <div id="contents_right">
+
+    <div id="mainVisual">
+        <div><img src="images/MainVisual.png" width="710" height="280"></div>
+        <div><img src="images/MainVisual2.png" width="710" height="280"></div>
+        <div><img src="images/MainVisual3.png" width="710" height="280"></div>
+        <div><img src="images/MainVisual4.png" width="710" height="280"></div>
+        <div><img src="images/MainVisual5.png" width="710" height="280"></div>
+    </div>
+
+    <div id="mainContents">
+
+      <div id="con_consept">
+        <p class="con_mg"><img src="images/consept.png" id="con1" width="170" height="220" alt="consept"></p>
+      </div>
+
+      <div id="con_consulting">
+        <p class="con_mg"><img src="images/consulting.png" id="con2" width="170" height="220" alt="consulting"></p>
+      </div>
+
+      <div id="con_production">
+        <p class="con_mg"><img src="images/production.png" id="con3" width="170" height="220" alt="production"></p>
+      </div>
+
+      <div id="con_traning">
+        <p class="con_mg"><img src="images/traning.png" id="con4" width="170" height="220" alt="traning"></p>
+      </div>
+
+    </div>
+
+    <div id="works">
+      <h2><img src="images/works_h2.png" width="63" height="22" alt="ワークス"></h2>
+      <ul>
+        <li class="works_links_left"><a href="images/bana_wd21_re.png" class="image"><img src="images/bana_wd21.png" width="140" height="60" alt="WD21"></a></li>
+        <li><a href="images/bana_cg22_re.png" class="image"><img src="images/bana_cg22.png" width="140" height="60" alt="CG22"></a></li>
+        <li class="works_links_left"><a href="images/bana_dg21_re.png" class="image"><img src="images/bana_dg21.png" width="140" height="60" alt="DG21"></a></li>
+        <li><a href="images/bana_dt21_re.png" class="image"><img src="images/bana_dt21.png" width="140" height="60" alt="DT21"></a></li>
+      </ul>
+    </div>
+
+    <div id="information">
+      <h2><img src="images/informatin_h2.png" width="97" height="22" alt="インフォメーション"></h2>
+      <ul>
+        <li><a href="#modal" class="modal">20xx.12.xx<span>モーダルを学習しました。</span></a></li>
+        <div id="modal" style="display:none;">20xx.12.xxにモーダルを学習しました。</div>
+
+        <li><a href="#modal2" class="modal">20xx.11.xx<span>WA課題No03が提示されました。</span></a></li>
+        <div id="modal2" style="display:none;">20xx.11.xxにWA課題No03が提示されました。</div>
+
+        <li><a href="#modal3" class="modal">20xx.11.xx<span>WA課題No02が提示されました。</span></a></li>
+        <div id="modal3" style="display:none;">20xx.11.xxにWA課題No02が提示されました。</div>
+
+        <li><a href="#modal4" class="modal">20xx.10.xx<span>WA課題No01を提出しました。</span></a></li>
+        <div id="modal4" style="display:none;">20xx.10.xxにWA課題No01が提示されました。</div>
+
+        <li><a href="#modal5" class="modal">20xx.10.xx<span>WA課題No01を提出しました。</span></a></li>
+        <div id="modal5" style="display:none;">20xx.10.xxにWA課題No01が提示されました。</div>
+
+        <li><a href="#modal6" class="modal">20xx.10.xx<span>js・jQueryの操作方法を学習しました。</span></a></li>
+        <div id="modal6" style="display:none;">20xx.10.xxにjs・jQueryの操作方法を学習しました。</div>
+      </ul>
+    </div>
+  </div>
+  <!--contents_right-->
+</div>
+<!--wrapper-->
+</body>
+</html>
